@@ -9,7 +9,6 @@ import com.shankulk.model.Pursuit;
 import com.shankulk.model.PursuitStatus;
 import com.shankulk.service.impl.PursuitServiceImpl;
 import java.util.UUID;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +17,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.verification.VerificationMode;
 
 @ExtendWith(MockitoExtension.class)
 public class PursuitServiceTest {

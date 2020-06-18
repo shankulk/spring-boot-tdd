@@ -18,14 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/pursuits")
 public class PursuitController {
 
+    private final PursuitService pursuitService;
+
     @Autowired
-    private PursuitService pursuitService;
-
-    /*@GetMapping
-    public Pursuit getPursuitById(UUID id) {
-
-    }*/
-
+    public PursuitController(PursuitService pursuitService) {
+        this.pursuitService = pursuitService;
+    }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createPursuit(@RequestBody PursuitDto pursuit) {

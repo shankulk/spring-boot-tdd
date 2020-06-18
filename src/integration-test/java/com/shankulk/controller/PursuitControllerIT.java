@@ -21,19 +21,18 @@ class PursuitControllerIT extends BaseIntegrationTest {
 
     @MockBean
     private PursuitDao pursuitDao;
-    private String baseUrl = "http://localhost:" + getPort();
+
+    @Autowired
+    TestRestTemplate restTemplate;
 
     @BeforeEach
     public void setup() {
         BDDMockito.doNothing().when(pursuitDao).save(Mockito.any(Pursuit.class));
     }
 
-    @Autowired
-    TestRestTemplate restTemplate;
-
     @Test
     public void testCreatePursuit() {
-        ResponseEntity<Void> pursuit = restTemplate.postForEntity(baseUrl + "/pursuits", pursuitFixture(),Void.class);
+        ResponseEntity<Void> pursuit = restTemplate.postForEntity(baseUrl + getPort() +"/pursuits", pursuitFixture(),Void.class);
         Assertions.assertThat(pursuit.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     }
 
