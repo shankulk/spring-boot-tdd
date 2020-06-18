@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public class PursuitDaoImpl implements PursuitDao {
 
     @Override
-    public void save(Pursuit any) {
-        // code to save to db
+    public void save(Pursuit pursuit) {
+
     }
 }

@@ -1,5 +1,6 @@
 package com.shankulk.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.UUID;
 
 public class Pursuit {
@@ -22,6 +23,7 @@ public class Pursuit {
         return id;
     }
 
+    @JsonValue
     public PursuitStatus getStatus() {
         return status;
     }
