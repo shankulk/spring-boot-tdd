@@ -5,9 +5,12 @@ import com.shankulk.model.Objective;
 import com.shankulk.model.ObjectiveComparator;
 import com.shankulk.model.Pursuit;
 import com.shankulk.service.PursuitService;
+import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,13 +27,13 @@ public class PursuitController {
     }*/
 
 
-    @PostMapping
-    public ResponseEntity<Pursuit> createPursuit(PursuitDto pursuit) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> createPursuit(@RequestBody PursuitDto pursuit) {
         Pursuit pursuitModel = pursuitService
             .createPursuit(pursuit.getPursuitName(),
                 Objective.createObjective(pursuit.getObjectiveName(), pursuit.getMetric(),
                     ObjectiveComparator.valueOf(pursuit.getComparator()), pursuit.getValue()));
-        return ResponseEntity.ok(pursuitModel);
+        return ResponseEntity.created(URI.create("/pursuits")).build();
     }
 
 }
